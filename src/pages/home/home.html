@@ -1,0 +1,31 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      To-Do App
+    </ion-title>
+    <ion-buttons end>
+        <button ion-button icon-only (click)="addTodo()">
+          <ion-icon name="add-circle"></ion-icon>
+        </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item-sliding *ngFor="let todo of list; let i = index;">
+      <ion-item detail-push (click)="goNextPage(todo)">
+        <span item-left> {{i + 1}} </span>
+        <h2>{{todo.title}}</h2>
+        <p>{{todo.description}}</p>
+      </ion-item>
+      <ion-item-options side="right">
+        <!--<button ion-button color="danger" (click)="remove(i)">-->
+        <button ion-button color="danger" (click)="remove(todo.id)">
+          <ion-icon name="trash"></ion-icon>
+          Delete
+        </button>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
+</ion-content>
